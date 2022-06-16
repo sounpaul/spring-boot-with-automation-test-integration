@@ -35,6 +35,14 @@ Directly from IDE
 --> Navigate to src/main/java/com/cg/employee/EmployeeApplication.java and start the application
 ````
 
+#REST API Documentation Using OpenAPI 3.0
+The services exposed by the application can be seen in the below url
+````
+http://localhost:8080/employee-swagger-ui.html
+
+````
+![img_8.png](screenshots/img_8.png)
+
 #Serenity BDD Tests
 Serenity BDD helps you write cleaner and more maintainable automated acceptance and regression tests faster. 
 Serenity also uses the test results to produce illustrated, narrative reports that document and describe what your application does and how it works. 
