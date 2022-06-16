@@ -8,7 +8,7 @@ buildscript {
         logbackVersion = '1.2.7'
         springbootVersion = '2.6.1'
         springDepMgmt = '1.0.11.RELEASE'
-        swaggerVersion = '2.7.0'
+        openApiVersion = '1.6.4'
         junitVersion = '4.13.2'
     }
     repositories {
@@ -63,8 +63,7 @@ dependencies {
 
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
-    implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
+    implementation "org.springdoc:springdoc-openapi-ui:${openApiVersion}"
     runtimeOnly "com.h2database:h2"
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "junit:junit:${junitVersion}"
