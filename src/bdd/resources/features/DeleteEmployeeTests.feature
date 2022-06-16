@@ -11,8 +11,8 @@ Feature: Serenity BDD Tests to test DELETE employee service
 
     Examples:
       | id   |
-      | 1537 |
-      | 4019 |
+      | 3769 |
+      | 2727 |
 
   @DeleteNonExistingEmployee @DeleteEmployee @EmployeeServiceTests
   Scenario Outline: Validate DELETE employee service for a non-existing employee
