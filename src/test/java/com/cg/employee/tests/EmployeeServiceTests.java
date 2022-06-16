@@ -1,5 +1,6 @@
 package com.cg.employee.tests;
 
+import com.cg.employee.utils.IdUtils;
 import com.cg.employee.utils.TestSetup;
 import com.cg.employee.beans.Employee;
 import com.cg.employee.mapper.EmployeeResponse;
@@ -25,7 +26,9 @@ public class EmployeeServiceTests extends TestSetup {
         String uri = "/api/addEmployee";
         Employee employee = new Employee();
         employee.setFirst_name("ABCD");
-        employee.setId(2222);
+        int id = IdUtils.randomIdGenerator();
+        System.setProperty("id", String.valueOf(id));
+        employee.setId(id);
         employee.setLast_name("Paul");
         employee.setPhone_number("987654210");
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -36,7 +39,7 @@ public class EmployeeServiceTests extends TestSetup {
         Assert.assertEquals(201, status);
         EmployeeResponse employeeResponse = super.mapFromJson(mvcResult.getResponse().getContentAsString(), EmployeeResponse.class);
         Assert.assertEquals(employeeResponse.getMsg(), "Employee created");
-        Assert.assertEquals(employeeResponse.getId(), 2222);
+        Assert.assertEquals(employeeResponse.getId(), id);
     }
 
     @Test
@@ -61,19 +64,19 @@ public class EmployeeServiceTests extends TestSetup {
     public void getExistingEmployeeByIdTest() throws Exception {
         String uri = "/api/getEmployee/id";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
-                .queryParam("id", "123456")).andReturn();
+                .queryParam("id", "123458")).andReturn();
         Assert.assertEquals(200, mvcResult.getResponse().getStatus());
         Employee employee = super.mapFromJson(mvcResult.getResponse().getContentAsString(), Employee.class);
-        Assert.assertEquals("TEST1", employee.getFirst_name());
+        Assert.assertEquals("TEST2", employee.getFirst_name());
         Assert.assertEquals("TEST3", employee.getLast_name());
-        Assert.assertEquals("987654321", employee.getPhone_number());
+        Assert.assertEquals("876543210", employee.getPhone_number());
     }
 
     @Test
     public void getExistingEmployeeByFirstNameTest() throws Exception {
         String uri = "/api/getEmployee/firstName";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
-                .queryParam("first_name", "TEST1")).andReturn();
+                .queryParam("first_name", "TEST5")).andReturn();
         Assert.assertEquals(200, mvcResult.getResponse().getStatus());
         List<Employee> employees = super.mapFromJson(mvcResult.getResponse().getContentAsString(), List.class);
         Assert.assertTrue(employees.size() > 0);
@@ -110,11 +113,11 @@ public class EmployeeServiceTests extends TestSetup {
     public void deleteExistingEmployeeTest() throws Exception {
         String uri = "/api/deleteEmployee";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)
-                .queryParam("id", "123459")).andReturn();
+                .queryParam("id", System.getProperty("id"))).andReturn();
         Assert.assertEquals(200, mvcResult.getResponse().getStatus());
         EmployeeResponse employeeResponse = super.mapFromJson(mvcResult.getResponse().getContentAsString(), EmployeeResponse.class);
         Assert.assertEquals("Employee deleted", employeeResponse.getMsg());
-        Assert.assertEquals(123459, employeeResponse.getId());
+        Assert.assertEquals(Integer.parseInt(System.getProperty("id")), employeeResponse.getId());
 
     }
 
@@ -133,19 +136,19 @@ public class EmployeeServiceTests extends TestSetup {
     public void updateExistingEmployeeTest() throws Exception {
         String uri = "/api/updateEmployee";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put(uri)
-                .queryParam("id", "123457")
+                .queryParam("id", "123456")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content("{\n" +
-                        "    \"first_name\" : \"ABCD\",\n" +
-                        "    \"last_name\" : \"XYZ\",\n" +
-                        "    \"phone_number\" : \"986876\"\n" +
+                        "    \"first_name\" : \"Test1234\",\n" +
+                        "    \"last_name\" : \"Test9876\",\n" +
+                        "    \"phone_number\" : \"6543234\"\n" +
                         "}")).andReturn();
         Assert.assertEquals(200, mvcResult.getResponse().getStatus());
         Employee employee = super.mapFromJson(mvcResult.getResponse().getContentAsString(), Employee.class);
-        Assert.assertEquals(123457, employee.getId());
-        Assert.assertEquals("ABCD", employee.getFirst_name());
-        Assert.assertEquals("XYZ", employee.getLast_name());
-        Assert.assertEquals("986876", employee.getPhone_number());
+        Assert.assertEquals(123456, employee.getId());
+        Assert.assertEquals("Test1234", employee.getFirst_name());
+        Assert.assertEquals("Test9876", employee.getLast_name());
+        Assert.assertEquals("6543234", employee.getPhone_number());
     }
 
     @Test

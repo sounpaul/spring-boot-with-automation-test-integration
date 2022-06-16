@@ -1,10 +1,15 @@
 HELP.md
 .gradle
 build/
+##screenshots/
 logs/
+database/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+
+###Serenity report folder###
+target/
 
 ### STS ###
 .apt_generated
