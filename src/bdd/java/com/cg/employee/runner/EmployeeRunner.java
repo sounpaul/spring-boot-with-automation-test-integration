@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = {"src/bdd/resources/features/"},
         glue = {"com.cg.employee.hooks", "com.cg.employee.stepdefinition"},
         plugin = {"pretty", "json:target/site/serenity/cucumber-results.json"},
-        tags = "@EmployeeServiceTests",
+        tags = "@AddEmployee",
         monochrome = false
 )
 public class EmployeeRunner {
