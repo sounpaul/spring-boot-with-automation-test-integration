@@ -3,7 +3,7 @@ HELP.md
 build/
 ##screenshots/
 logs/
-database/
+##database/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
