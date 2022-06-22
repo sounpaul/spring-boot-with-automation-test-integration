@@ -91,6 +91,7 @@ task bddTest(type: Test) {
     systemProperties = [
             "logback.configurationFile": "logback.xml"
     ]
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
 }
 
 serenity {

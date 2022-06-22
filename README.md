@@ -50,7 +50,14 @@ Serenity tells you not only what tests have been executed, but more importantly,
 
 ##Command to run the Serenity BDD Tests
 ````
---> gradle clean bddTest or ./gradlew clean bddTest
+--> gradle clean bddTest or ./gradlew clean bddTest for running all the tests
+
+To run any specific tag
+gradle clean bddTest -Dcucumber.filter.tags="@AddEmployee"
+gradle clean bddTest -Dcucumber.filter.tags="@DeleteEmployee"
+gradle clean bddTest -Dcucumber.filter.tags="@UpdateEmployee"
+gradle clean bddTest -Dcucumber.filter.tags="@GetEmployee"
+
 ````
 ##Test Report
 ````
