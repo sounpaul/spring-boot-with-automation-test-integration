@@ -2,20 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage ('Serenity BDD Tests') {
-        echo "Starting to execute BDD Tests"
+        stage ('Run Automation Tests') {
             steps {
-                sh './gradlew clean bddTest -Dcucumber.filter.tags="@AddEmployee"'
+				echo "Start : Serenity BDD Tests"
+				sh './gradlew clean bddTest -Dcucumber.filter.tags="@${Tag}"'
+				echo "End : Serenity BDD Tests"
+				echo "Start : Gatling Simulation"
+				sh './gradlew clean gatlingRun -Dduration=${Duration} -Dusers=${TPS} -Denvironment=${Region}'
+				echo "End : Gatling Simulation"
             }
-        echo "BDD Test execution completed"
-        }
-
-        stage ('Gatling Simulation') {
-                echo "Starting Gatling simulation"
-                    steps {
-                        sh './gradlew clean gatlingRun -Dduration=$Duration -Dusers=$TPS -Denvironment=$Environment'
-                    }
-                echo "Gatling simulation ended"
         }
     }
 }
