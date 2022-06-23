@@ -65,6 +65,12 @@ gradle clean bddTest -Dcucumber.filter.tags="@DeleteEmployee"
 gradle clean bddTest -Dcucumber.filter.tags="@UpdateEmployee"
 gradle clean bddTest -Dcucumber.filter.tags="@GetEmployee"
 
+To run any specific tag for a specific environment/region
+
+gradle clean bddTest -Dcucumber.filter.tags="@AddEmployee" -Denvironment=dev
+gradle clean bddTest -Dcucumber.filter.tags="@AddEmployee" -Denvironment=qa
+gradle clean bddTest -Dcucumber.filter.tags="@AddEmployee" -Denvironment=prod
+
 ````
 ##Serenity Test Report
 ````
