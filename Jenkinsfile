@@ -10,7 +10,7 @@ pipeline {
         echo "BDD Test execution completed"
         }
 
-        stage ('Serenity BDD Tests') {
+        stage ('Gatling Simulation') {
                 echo "Starting Gatling simulation"
                     steps {
                         sh './gradlew clean gatlingRun -Dduration=$Duration -Dusers=$TPS -Denvironment=$Environment'
