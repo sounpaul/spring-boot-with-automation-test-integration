@@ -1,5 +1,7 @@
 package com.cg.employee.runner;
 
+import com.cg.employee.utils.BDDUtils;
+import com.cg.employee.utils.EmailUtils;
 import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.AfterClass;
@@ -34,20 +36,42 @@ public class EmployeeRunner {
 
     @AfterClass
     public static void tearDown() {
-        try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\target\\site\\serenity\\results.csv"))) {
-            String currentLine;
+        String filePath = "src\\bdd\\resources\\results.csv";
+        BufferedReader br = null;
+        String html =
+                "<table width='100%' border='1' align='center'>"
+                        + "<tr align='center'>"
+                        + "<td><b>Scenario Name<b></td>"
+                        + "<td><b>Scenario Result<b></td>"
+                        + "</tr>";
+        File file = new File(filePath);
+        try {
+            br = new BufferedReader(new FileReader(filePath));
+            String currentLine, scenarioName, scenarioResult;
             Map<String, String> resultsMap = new LinkedHashMap<String, String>();
             while ((currentLine = br.readLine()) != null) {
-                if (!currentLine.contains("Story")) {
-                    resultsMap.put(currentLine.split(Pattern.quote(","))[1], currentLine.split(Pattern.quote(","))[2]);
-                }
+                scenarioName = currentLine.split(Pattern.quote(","))[0].replace("\"", "");
+                scenarioResult = currentLine.split(Pattern.quote(","))[1].replace("\"", "");
+                resultsMap.put(scenarioName, scenarioResult);
             }
-            resultsMap.forEach((featureName, featureResult) -> {
-                logger.info(featureName + " --> " + featureResult);
-            });
-
+            for (Map.Entry entry : resultsMap.entrySet()) {
+                html = html + "<tr align='center'>" + "<td>" + entry.getKey() + "</td>"
+                        + "<td>" + entry.getValue() + "</td>" + "</tr>";
+            }
+            EmailUtils.sendEmail(html);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+                if (file.delete())
+                    logger.info("Test result file deleted");
+                else
+                    logger.info("Skipped/Ignored");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
     }
 

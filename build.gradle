@@ -10,6 +10,8 @@ buildscript {
         springDepMgmt = '1.0.11.RELEASE'
         openApiVersion = '1.6.4'
         junitVersion = '4.13.2'
+        openCSVVersion = '5.6'
+        gatlingVersion = '3.7.6.2'
     }
     repositories {
         maven {
@@ -28,6 +30,8 @@ plugins {
     id 'java'
     id 'idea'
     id 'eclipse'
+    id 'scala'
+    id 'io.gatling.gradle' version "${gatlingVersion}"
 }
 
 apply plugin: 'net.serenity-bdd.aggregator'
@@ -55,6 +59,11 @@ sourceSets {
         java
         resources
     }
+
+    gatling {
+        scala
+        resources
+    }
 }
 
 dependencies {
@@ -75,6 +84,8 @@ dependencies {
     bddImplementation "net.serenity-bdd:serenity-cucumber6:${serenityCucumberVersion}"
     bddImplementation "net.serenity-bdd:serenity-rest-assured:${serenityRestAssuredVersion}"
     bddImplementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    bddImplementation "com.opencsv:opencsv:${openCSVVersion}"
+    bddImplementation 'com.sun.mail:javax.mail:1.6.2'
 
 
     //Lombok for BDD
@@ -92,6 +103,16 @@ task bddTest(type: Test) {
             "logback.configurationFile": "logback.xml"
     ]
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+}
+
+gatling {
+    logLevel = 'INFO'
+    logHttp = 'NONE'
+
+    scalaVersion = '2.13.7'
+
+    includeMainOutput = false
+    includeTestOutput = false
 }
 
 serenity {
