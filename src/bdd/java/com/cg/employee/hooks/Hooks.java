@@ -18,8 +18,7 @@ public class Hooks {
     @Before
     public void beforeScenario(Scenario scenario) {
         logger.info("Start of scenario : " + scenario.getName());
-        //System.setProperty("recipients", EnvironmentSpecificConfiguration.from(environmentVariables).getProperty("recipients"));
-        System.setProperty("recipients",EnvironmentSpecificConfiguration.from(environmentVariables).getProperty("recipients"));
+        System.setProperty("recipients", EnvironmentSpecificConfiguration.from(environmentVariables).getProperty("recipients"));
     }
 
     @After

@@ -103,6 +103,7 @@ task bddTest(type: Test) {
             "logback.configurationFile": "logback.xml"
     ]
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+    systemProperties(System.getProperties())
 }
 
 gatling {

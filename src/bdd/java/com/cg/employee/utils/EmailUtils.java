@@ -14,8 +14,8 @@ public class EmailUtils {
     private static Logger logger = LoggerFactory.getLogger(EmailUtils.class);
 
     public static void sendEmail(String htmlContent) {
-        final String username = "**"; //replace with your username
-        final String password = "**"; //replace with your password
+        final String username = System.getProperty("username"); //replace with your username
+        final String password = System.getProperty("password"); //replace with your password
         String toAddress = System.getProperty("recipients");
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
