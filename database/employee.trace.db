@@ -376,3 +376,73 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "'update 
 where id = (select id from employee where lastname='Paul[*]')"; SQL statement:
 'update employee set lastname='XYZ'
 where id = (select id from employee where lastname='Paul') [42000-200]
+2022-06-23 20:25:58 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = (SELECT ID FROM EMPLOYEE WHERE ID=320)"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = (select id from employee where id=320) [42000-200]
+2022-06-23 20:27:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:07 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:08 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:10 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
+2022-06-23 20:28:10 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPLOYEE WHERE LASTNAME='Paul'
+
+UPDATE[*] EMPLOYEE SET LASTNAME='XYZ' WHERE ID = 320"; SQL statement:
+select * from employee where lastname='Paul'
+
+update employee set lastname='XYZ' where id = 320 [42000-200]
