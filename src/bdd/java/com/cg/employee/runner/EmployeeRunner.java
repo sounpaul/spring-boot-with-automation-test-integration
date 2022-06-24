@@ -31,7 +31,7 @@ public class EmployeeRunner {
 
     @BeforeClass
     public static void setup() {
-        logger.info("-------Start of Serenity Tests-------");
+        System.out.println("-------Start of Serenity Tests-------");
     }
 
     @AfterClass
@@ -65,9 +65,9 @@ public class EmployeeRunner {
             try {
                 br.close();
                 if (file.delete())
-                    logger.info("Test result file deleted");
+                    System.out.println("Test result file deleted");
                 else
-                    logger.info("Skipped/Ignored");
+                    System.out.println("Skipped/Ignored");
             } catch (Exception e) {
                 e.printStackTrace();
             }

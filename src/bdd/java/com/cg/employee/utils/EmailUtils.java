@@ -38,7 +38,7 @@ public class EmailUtils {
             message.setSubject("BDD Test Results : " + BDDUtils.getCurrentDateTime());
             message.setContent(htmlContent, "text/html; charset=utf-8");
             Transport.send(message);
-            logger.info("Email send to : " + toAddress);
+            System.out.println("Email send to : " + toAddress);
 
         } catch (MessagingException e) {
             e.printStackTrace();

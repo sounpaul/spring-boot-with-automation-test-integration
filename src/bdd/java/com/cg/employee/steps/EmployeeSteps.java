@@ -29,7 +29,7 @@ public class EmployeeSteps {
     @Step
     public void createEmployeeRequest(int id, String firstName, String lastName, String phoneNumber) {
         EmployeeDetails employeeDetails = new EmployeeDetails(id, firstName, lastName, phoneNumber);
-        logger.info("Storing employee request to Serenity session varibale : " + employeeDetails);
+        System.out.println("Storing employee request to Serenity session varibale : " + employeeDetails);
         Serenity.setSessionVariable("employeeRequest").to(employeeDetails);
     }
 
@@ -81,7 +81,7 @@ public class EmployeeSteps {
                     .body(employeeUpdateRequest)
                     .put(endpoint);
         }
-        logger.info("Submitted request to employee service : " + endpoint);
+        System.out.println("Submitted request to employee service : " + endpoint);
     }
 
     @Step
@@ -92,7 +92,7 @@ public class EmployeeSteps {
     @Step
     public void validateResponseBody(String id, String expectedMsg) {
         EmployeeResponse employeeResponse = response.then().log().all().extract().as(EmployeeResponse.class);
-        logger.info("Response : " + employeeResponse);
+        System.out.println("Response : " + employeeResponse);
         Assert.assertEquals(id, String.valueOf(employeeResponse.getId()));
         Assert.assertEquals(expectedMsg, employeeResponse.getMsg());
     }

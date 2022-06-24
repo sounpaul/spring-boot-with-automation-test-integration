@@ -23,7 +23,7 @@ public class BDDUtils {
     public static int randomIdGenerator() {
         Random random = new Random();
         int id = random.nextInt(5000);
-        logger.info("Generated ID : " + id);
+        System.out.println("Generated ID : " + id);
         return id;
     }
 
@@ -35,7 +35,7 @@ public class BDDUtils {
             csvData[0] = scenarioName;
             csvData[1] = scenarioResult;
             CSVWriter writer = new CSVWriter(outputFile);
-            logger.info("Appended <" + scenarioName + "," + scenarioResult + "> to " + file.getPath());
+            System.out.println("Appended <" + scenarioName + "," + scenarioResult + "> to " + file.getPath());
             writer.writeNext(csvData);
             writer.close();
         } catch (Exception e) {

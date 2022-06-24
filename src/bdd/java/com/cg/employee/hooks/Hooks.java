@@ -17,13 +17,13 @@ public class Hooks {
 
     @Before
     public void beforeScenario(Scenario scenario) {
-        logger.info("Start of scenario : " + scenario.getName());
+        System.out.println("Start of scenario : " + scenario.getName());
         System.setProperty("recipients", EnvironmentSpecificConfiguration.from(environmentVariables).getProperty("recipients"));
     }
 
     @After
     public void afterEachScenario(Scenario scenario) {
         BDDUtils.writeTestResult(scenario.getName(), scenario.getStatus().name());
-        logger.info("End of scenario : " + scenario.getName());
+        System.out.println("End of scenario : " + scenario.getName());
     }
 }
