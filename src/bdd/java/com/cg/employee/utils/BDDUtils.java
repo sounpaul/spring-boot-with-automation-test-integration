@@ -1,20 +1,14 @@
 package com.cg.employee.utils;
 
 import com.opencsv.CSVWriter;
-import net.serenitybdd.core.Serenity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 import java.util.Random;
-import java.util.regex.Pattern;
 
 public class BDDUtils {
 
